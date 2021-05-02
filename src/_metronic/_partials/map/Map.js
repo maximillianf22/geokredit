@@ -3,7 +3,7 @@ import {useHtmlClassService} from "../../layout";
 import {Card, CardBody, CardHeader, Notice} from "../controls";
 
 
-export function Builder() {
+export function Map() {
 
     return (
         <>
