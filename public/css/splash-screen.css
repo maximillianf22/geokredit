@@ -31,6 +31,11 @@ body {
   height: 50px;
 }
 
+.bg-radial-gradient-primary {
+  background-color: #1D71B8 !important;
+  background-image: radial-gradient(circle, rgba(225, 240, 255, 0.4), #1D71B8 70%) !important;
+}
+
 
 @media (min-width: 992px){
   .aside-fixed .aside {

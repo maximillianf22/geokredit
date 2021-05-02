@@ -53,19 +53,31 @@ export function StatsWidget11({ className, symbolShape, baseColor }) {
     <div className={`card card-custom ${className}`}>
       <div className="card-body p-0">
         <div className="d-flex align-items-center justify-content-between card-spacer flex-grow-1">
-          <span
-            className={`symbol ${symbolShape} symbol-50 symbol-light-${baseColor} mr-2`}
-          >
-            <span className="symbol-label">
-              <span className={`svg-icon svg-icon-xl svg-icon-${baseColor}`}>
-                <SVG
-                  src={toAbsoluteUrl(
-                    "/media/svg/icons/Layout/Layout-4-blocks.svg"
-                  )}
-                ></SVG>
-              </span>
+            <span className="symbol-label h4 font-weight-bold">
+                Meta mensual Colocados <br/>
+                <small>$150.000.000</small><br/>
+                <small>15 Dias restantes</small> <br/>
+                <div className="d-flex flex-column w-100 mr-2">
+                    <div className="d-flex align-items-center justify-content-between mb-2">
+                      <span className="text-muted mr-2 font-size-sm font-weight-bold">
+                        65%
+                      </span>
+                      <span className="text-muted font-size-sm font-weight-bold">
+                        Progress
+                      </span>
+                    </div>
+                    <div className="progress progress-xs w-100">
+                      <div
+                        className="progress-bar bg-success"
+                        role="progressbar"
+                        style={{ width: "65%" }}
+                        aria-valuenow="50"
+                        aria-valuemin="0"
+                        aria-valuemax="100"
+                      ></div>
+                    </div>
+                  </div>
             </span>
-          </span>
           <div className="d-flex flex-column text-right">
             <span className="text-dark-75 font-weight-bolder font-size-h3">
               750$

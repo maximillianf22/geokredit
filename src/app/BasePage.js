@@ -32,11 +32,8 @@ export default function BasePage() {
           <Redirect exact from="/" to="/dashboard" />
         }
         <ContentRoute path="/dashboard" component={DashboardPage} />
-        <ContentRoute path="/map" component={MapPage} />
+        <ContentRoute path="/mapa" component={MapPage} />
         <ContentRoute path="/my-page" component={MyPage} />
-        <Route path="/google-material" component={GoogleMaterialPage} />
-        <Route path="/react-bootstrap" component={ReactBootstrapPage} />
-        <Route path="/e-commerce" component={ECommercePage} />
         <Route path="/user-profile" component={UserProfilepage} />
         <Redirect to="error/error-v1" />
       </Switch>

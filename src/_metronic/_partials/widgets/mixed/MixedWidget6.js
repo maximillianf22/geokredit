@@ -49,28 +49,13 @@ export function MixedWidget6({ className, chartColor = "danger" }) {
     <>
       {/* begin::Tiles Widget 1 */}
       <div
-        className={`card card-custom bg-radial-gradient-danger ${className}`}
+        className={`card card-custom bg-radial-gradient-primary ${className}`}
       >
         {/* begin::Header */}
         <div className="card-header border-0 pt-5">
           <h3 className="card-title font-weight-bolder text-white">
-            Sales Progress
-          </h3>
-          <div className="card-toolbar">
-            <Dropdown className="dropdown-inline" alignRight>
-              <Dropdown.Toggle
-                className="btn btn-text-white btn-hover-white btn-sm btn-icon border-0"
-                variant="transparent"
-                id="dropdown-toggle-top"
-                as={DropdownCustomToggler}
-              >
-                <i className="ki ki-bold-more-hor" />
-              </Dropdown.Toggle>
-              <Dropdown.Menu className="dropdown-menu dropdown-menu-sm dropdown-menu-right">
-                <DropdownMenu2 />
-              </Dropdown.Menu>
-            </Dropdown>
-          </div>
+            Eficiencia
+          </h3> 
         </div>
         {/* end::Header */}
 
@@ -80,7 +65,7 @@ export function MixedWidget6({ className, chartColor = "danger" }) {
           <div
             id="kt_mixed_widget_6_chart"
             data-color={chartColor}
-            style={{ height: "200px" }}
+            style={{ height: "350px" }}
           />
           {/* end::Chart */}
 
@@ -88,33 +73,49 @@ export function MixedWidget6({ className, chartColor = "danger" }) {
           <div className="card-spacer bg-white card-rounded flex-grow-1">
             {/* begin::Row */}
             <div className="row m-0">
-              <div className="col px-8 py-6 mr-8">
+              <div className="col px-4 py-6 mr-8">
                 <div className="font-size-sm text-muted font-weight-bold">
-                  Average Sale
+                   Creditos Radicados
                 </div>
-                <div className="font-size-h4 font-weight-bolder">$650</div>
+                <div className="font-size-h4 font-weight-bolder">650</div>
               </div>
-              <div className="col px-8 py-6">
+              <div className="col px-4 py-6">
                 <div className="font-size-sm text-muted font-weight-bold">
-                  Commission
+                  Visitas Realizadas
                 </div>
-                <div className="font-size-h4 font-weight-bolder">$233,600</div>
+                <div className="font-size-h4 font-weight-bolder">3,600</div>
               </div>
             </div>
             {/* end::Row */}
             {/* begin::Row */}
             <div className="row m-0">
-              <div className="col px-8 py-6 mr-8">
+              <div className="col px-4 py-6 mr-8">
                 <div className="font-size-sm text-muted font-weight-bold">
-                  Annual Taxes
+                  Credito Aprobado
                 </div>
-                <div className="font-size-h4 font-weight-bolder">$29,004</div>
+                <div className="font-size-h4 font-weight-bolder">$29,004,000</div>
               </div>
-              <div className="col px-8 py-6">
+              <div className="col px-4 py-6">
                 <div className="font-size-sm text-muted font-weight-bold">
-                  Annual Income
+                  Visitas Agendadas
                 </div>
-                <div className="font-size-h4 font-weight-bolder">$1,480,00</div>
+                <div className="font-size-h4 font-weight-bolder">1,480</div>
+              </div>
+            </div>
+            {/* end::Row */}
+            {/* begin::Row */}
+            <div className="row m-0">
+              <div className="col px-4 py-6 mr-8">
+                <div className="font-size-sm text-muted font-weight-bold">
+                  Credito Solicitado
+                </div>
+                <div className="font-size-h4 font-weight-bolder">$49,004,000</div>
+              </div>
+              <div className="col px-4 py-6">
+                <div className="font-size-sm text-muted font-weight-bold">
+                  Visitas Prospectadas
+                </div>
+                <div className="font-size-h4 font-weight-bolder">980</div>
               </div>
             </div>
             {/* end::Row */}
@@ -132,17 +133,17 @@ function getChartOption(layoutProps) {
   const options = {
     series: [
       {
-        name: "Net Profit",
+        name: "Prospectados",
         data: [35, 65, 75, 55, 45, 60, 55],
       },
       {
-        name: "Revenue",
+        name: "Colocados",
         data: [40, 70, 80, 60, 50, 65, 60],
       },
     ],
     chart: {
       type: "bar",
-      height: "200px",
+      height: "350px",
       toolbar: {
         show: false,
       },
@@ -169,7 +170,7 @@ function getChartOption(layoutProps) {
       colors: ["transparent"],
     },
     xaxis: {
-      categories: ["Feb", "Mar", "Apr", "May", "Jun", "Jul"],
+      categories: ["Feb", "Mar", "Abr", "May", "Jun", "Jul"],
       axisBorder: {
         show: false,
       },
@@ -227,7 +228,7 @@ function getChartOption(layoutProps) {
       },
       y: {
         formatter: function(val) {
-          return "$" + val + " thousands";
+          return  val + " Creditos";
         },
       },
       marker: {
