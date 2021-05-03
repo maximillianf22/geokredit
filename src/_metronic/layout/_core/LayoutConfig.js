@@ -51,7 +51,7 @@ export function getInitLayoutConfig() {
           gray200: "#ECF0F3",
           gray300: "#E5EAEE",
           gray400: "#D6D6E0",
-          gray500: "#B5B5C3",
+          gray500: "#6f6f6f",
           gray600: "#80808F",
           gray700: "#464E5F",
           gray800: "#1B283F",

@@ -87,14 +87,35 @@ body {
   }
 }
 
+.w-40 {
+  width: 40%!important;
+}
+
+.lh-1 {
+  line-height: 1;
+}
+
+.tb-nav {
+  position: absolute;
+  top: 25px;
+  right: 25px;
+}
+
+.nav-map {
+  position: absolute;
+  top: 15px !important;
+  right: 30% !important;
+}
+
+
 .splash-spinner .path {
   stroke: #5d78ff;
   stroke-linecap: round;
   animation: dash 1.5s ease-in-out infinite;
 }
 
-.h-255 {
-  max-height: 255px;
+.h-270 {
+  max-height: 270px;
 }
 
 @keyframes rotate {

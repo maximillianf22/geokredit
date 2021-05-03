@@ -1,18 +1,9 @@
 import React from "react";
 import {
-  MixedWidget1,
-  MixedWidget4,
-  MixedWidget14,
   MixedWidget6,
-  ListsWidget9,
   StatsWidget11,
-  StatsWidget12,
   ListsWidget1,
-  AdvanceTablesWidget2,
-  AdvanceTablesWidget4,
   ListsWidget3,
-  ListsWidget4,
-  ListsWidget8,
 } from "../widgets";
 export function Demo1Dashboard() {
   return (
@@ -24,7 +15,7 @@ export function Demo1Dashboard() {
         </div>
         <div className="col-xl-8">
           <StatsWidget11
-            className="card-stretch card-stretch-half gutter-b h-255"
+            className="card-stretch card-stretch-half gutter-b h-270"
             symbolShape="circle"
             baseColor="success" 
           />

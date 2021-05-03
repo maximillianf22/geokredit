@@ -3,13 +3,17 @@ import { Marker } from 'google-maps-react'
 import GoogleMapReact from 'google-map-react';
 import {Popover, OverlayTrigger} from 'react-bootstrap'
 
-import company from './icons/company.svg'
-import client from './icons/client.svg'
+import officePrimary from './icons/office-primary.svg'
+import officeWarning from './icons/office-warning.svg'
+import asesorActive from './icons/asesor-active.svg'
+import asesorInactive from './icons/asesor-inactive.svg'
 
 
 import ModalCalendar from './ModalCalendar'
 import ModalPerfil from './ModalPerfil'
+import ModalOficina from './modalOficina'
 import InfoWindowCustom from './InfoWindow'
+import InfoWindowCustom2 from './InfoWindow2'
 
 //https://www.npmjs.com/package/google-maps-react DOCUMENTACIÓN DE LA LIBRERÍA
 
@@ -44,15 +48,20 @@ function MapContainer(props) {
     const handleShowModalPerfil = () => setShowModalPerfil(true)
     const handleCloseModalPerfil = () => setShowModalPerfil(false)
 
+    const [showModalOficina, setShowModalOficina] = useState(false)
+    const handleShowModalOficina = () => setShowModalOficina(true)
+    const handleCloseModalOficina = () => setShowModalOficina(false)
+
     const [showInfo, setShowInfo] = useState({
         showingInfoWindow: false,
+        showingInfoWindow2: false,
         activeMarker: {},
         selectedPlace: {},
     })
 
     const handleClickMarker = (lat, lng) => {
         setMapProps({
-            zoom: 12,
+            zoom: 14,
             center: { lat: lat, lng: lng},
             visibleClients: true
         })
@@ -62,6 +71,14 @@ function MapContainer(props) {
     <Popover.Content>
       <InfoWindowCustom handleShowModalCalendar = {handleShowModalCalendar}
             handleShowModalPerfil = {handleShowModalPerfil}/>
+    </Popover.Content>
+  </Popover> );
+
+const popoverMap = (
+  <Popover id="popover-basic" style = {{position : 'fixed'}}>
+    <Popover.Content>
+      <InfoWindowCustom2 handleShowModalOficina = {handleShowModalOficina}
+            handleShowModalOficina = {handleShowModalOficina}/>
     </Popover.Content>
   </Popover>
 );
@@ -76,29 +93,33 @@ function MapContainer(props) {
         >
 
         <div lat = {4.60971} lng = {-74.08175} onClick = {() => handleClickMarker(4.60971, -74.08175)}>
+          <OverlayTrigger trigger="click" placement="top" overlay={popoverMap}>
           <button className="btn">
-            <img src={company} alt="" style = {{height : '35px', width : '35px'}}/>
-          </button>
-        </div>
-
-        <div lat = {10.96854} lng = {-74.78132} onClick = {() => handleClickMarker(10.96854, -74.78132)}>
-          <button className="btn">
-            <img src={company} alt="" style = {{height : '35px', width : '35px'}}/>
-          </button>
-        </div>
-
-        <div lat = {4.60971} lng = {-74.09975} className = {mapProps.visibleClients ? '' : 'd-none'}>
-          <OverlayTrigger trigger="click" placement="top" overlay={popover}>
-          <button className="btn">
-            <img src={client} alt="" style = {{height : '35px', width : '35px'}}/>
+            <img src={officePrimary} alt="" style = {{height : '35px', width : '35px'}}/>
           </button>
           </OverlayTrigger>
         </div>
 
-        <div lat = {4.64871} lng = {-74.09580} className = {mapProps.visibleClients ? '' : 'd-none'}>
+        <div lat = {10.96854} lng = {-74.78132} onClick = {() => handleClickMarker(10.96854, -74.78132)}>
+          <OverlayTrigger trigger="click" placement="top" overlay={popoverMap}>
+          <button className="btn">
+            <img src={officePrimary} alt="" style = {{height : '35px', width : '35px'}}/>
+          </button>
+          </OverlayTrigger>
+        </div>
+
+        <div lat = {4.61971} lng = {-74.09975} className = {mapProps.visibleClients ? '' : 'd-none'}>
           <OverlayTrigger trigger="click" placement="top" overlay={popover}>
           <button className="btn">
-            <img src={client} alt="" style = {{height : '35px', width : '35px'}}/>
+            <img src={asesorActive} alt="" style = {{height : '35px', width : '35px'}}/>
+          </button>
+          </OverlayTrigger>
+        </div>
+
+        <div lat = {4.65871} lng = {-74.09580} className = {mapProps.visibleClients ? '' : 'd-none'}>
+          <OverlayTrigger trigger="click" placement="top" overlay={popover}>
+          <button className="btn">
+            <img src={asesorActive} alt="" style = {{height : '35px', width : '35px'}}/>
           </button>
           </OverlayTrigger>
         </div>
@@ -106,15 +127,15 @@ function MapContainer(props) {
         <div lat = {10.97854} lng = { -74.78232} className = {mapProps.visibleClients ? '' : 'd-none'}>
           <OverlayTrigger trigger="click" placement="top" overlay={popover}>
           <button className="btn">
-            <img src={client} alt="" style = {{height : '35px', width : '35px'}}/>
+            <img src={asesorInactive} alt="" style = {{height : '35px', width : '35px'}}/>
           </button>
           </OverlayTrigger>
         </div>
 
-        <div lat = {10.98654} lng = {-74.78832} className = {mapProps.visibleClients ? '' : 'd-none'}>
+        <div lat = {10.98754} lng = {-74.78832} className = {mapProps.visibleClients ? '' : 'd-none'}>
           <OverlayTrigger trigger="click" placement="top" overlay={popover}>
           <button className="btn">
-            <img src={client} alt="" style = {{height : '35px', width : '35px'}}/>
+            <img src={asesorActive} alt="" style = {{height : '35px', width : '35px'}}/>
           </button>
           </OverlayTrigger>
         </div>
@@ -122,6 +143,7 @@ function MapContainer(props) {
 
           <ModalCalendar show = {showModalCalendar} handleClose = {handleCloseModalCalendar}/>
           <ModalPerfil show = {showModalPerfil} handleClose = {handleCloseModalPerfil}/>
+          <ModalOficina show = {showModalOficina} handleClose = {handleCloseModalOficina}/>
         </GoogleMapReact>
     )
 }

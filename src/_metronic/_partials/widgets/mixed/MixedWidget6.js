@@ -65,12 +65,12 @@ export function MixedWidget6({ className, chartColor = "danger" }) {
           <div
             id="kt_mixed_widget_6_chart"
             data-color={chartColor}
-            style={{ height: "350px" }}
+            style={{ height: "400px" }}
           />
           {/* end::Chart */}
 
           {/* begin::Stats */}
-          <div className="card-spacer bg-white card-rounded flex-grow-1">
+          <div className="card-spacer bg-white card-rounded flex-grow-1 my-auto">
             {/* begin::Row */}
             <div className="row m-0">
               <div className="col px-4 py-6 mr-8">
@@ -143,7 +143,7 @@ function getChartOption(layoutProps) {
     ],
     chart: {
       type: "bar",
-      height: "350px",
+      height: "400px",
       toolbar: {
         show: false,
       },
@@ -170,7 +170,7 @@ function getChartOption(layoutProps) {
       colors: ["transparent"],
     },
     xaxis: {
-      categories: ["Feb", "Mar", "Abr", "May", "Jun", "Jul"],
+      categories: ["Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago"],
       axisBorder: {
         show: false,
       },

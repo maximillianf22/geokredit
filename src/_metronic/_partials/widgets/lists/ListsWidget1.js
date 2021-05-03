@@ -1,33 +1,47 @@
 /* eslint-disable no-script-url,jsx-a11y/anchor-is-valid */
-import React from "react";
-import SVG from "react-inlinesvg";
-import {Dropdown} from "react-bootstrap";
-import {toAbsoluteUrl} from "../../../_helpers";
-import {DropdownCustomToggler, DropdownMenu4} from "../../dropdowns";
+import React, { useState } from "react";
+
+
 
 export function ListsWidget1({ className }) {
+  const tabs = {
+    tab11: "kt_tab_pane__1",
+    tab21: "kt_tab_pane__2",
+  };
+  const [activeTab, setActiveTab] = useState(tabs.tab11);
   return (
     <>
       <div className={`card card-custom ${className}`}>
         {/* Header */}
         <div className="card-header border-0">
           <h3 className="card-title font-weight-bolder text-dark">
-            Tasks Overview
+            Top Oficinas
           </h3>
-          <div className="card-toolbar">
-            <Dropdown className="dropdown-inline" alignRight>
-              <Dropdown.Toggle
-                className="btn btn-clean btn-hover-light-primary btn-sm btn-icon"
-                variant="transparent"
-                id="dropdown-toggle-top"
-                as={DropdownCustomToggler}
-               >
-                <i className="ki ki-bold-more-hor" />
-              </Dropdown.Toggle>
-              <Dropdown.Menu className="dropdown-menu dropdown-menu-sm dropdown-menu-right">
-                <DropdownMenu4 />
-              </Dropdown.Menu>
-            </Dropdown>            
+          <div className="card-toolbar tb-nav bg-secondary rounded mt-0">
+            <ul className="nav nav-pills nav-pills-sm nav-dark-75">
+              <li className="nav-item">
+                <a
+                  className={`nav-link py-2 px-4 ${activeTab === tabs.tab11 &&
+                    "active"}`}
+                  data-toggle="tab"
+                  href={`#${tabs.tab11}`}
+                  onClick={() => setActiveTab(tabs.tab11)}
+                >
+                  Alta
+                </a>
+              </li>
+              <li className="nav-item">
+                <a
+                  className={`nav-link py-2 px-4 ${activeTab === tabs.tab21 &&
+                    "active"}`}
+                  data-toggle="tab"
+                  href={`#${tabs.tab21}`}
+                  onClick={() => setActiveTab(tabs.tab21)}
+                >
+                  Baja
+                </a>
+              </li>
+            </ul>        
           </div>
         </div>
 
@@ -37,121 +51,129 @@ export function ListsWidget1({ className }) {
             <div className="symbol symbol-40 symbol-light-primary mr-5">
               <span className="symbol-label">
                 <span className="svg-icon svg-icon-lg svg-icon-primary">
-                  <SVG
-                    className="h-75 align-self-end"
-                    src={toAbsoluteUrl("/media/svg/icons/Home/Library.svg")}
-                  ></SVG>
+                  <i className="fa fa-building fa-lg text-primary"></i>
                 </span>
               </span>
             </div>
 
-            <div className="d-flex flex-column font-weight-bold">
+            <div className="d-flex flex-column font-weight-bold w-75">
               <a
                 href="#"
-                className="text-dark text-hover-primary mb-1 font-size-lg"
+                className="text-primary text-hover-dark font-size-lg"
               >
-                Project Briefing
+                Oficina Barranquilla
               </a>
-              <span className="text-muted">Project Manager</span>
+              <span className="text-muted lh-1">
+                30 Asesores <br/>
+                Marcos Barrios GZ
+              </span>
             </div>
+            <span className="label label-lg label-light-dark label-inline font-weight-bold py-4">
+                  97%
+            </span>
           </div>
 
           <div className="d-flex align-items-center mb-10">
             <div className="symbol symbol-40 symbol-light-warning mr-5">
               <span className="symbol-label">
                 <span className="svg-icon svg-icon-lg svg-icon-warning">
-                  <SVG
-                    className="h-75 align-self-end"
-                    src={toAbsoluteUrl(
-                      "/media/svg/icons/Communication/Write.svg"
-                    )}
-                  ></SVG>
+                <i className="fa fa-building fa-lg text-warning"></i>
                 </span>
               </span>
             </div>
-            <div className="d-flex flex-column font-weight-bold">
+            <div className="d-flex flex-column font-weight-bold w-75">
               <a
                 href="#"
-                className="text-dark-75 text-hover-primary mb-1 font-size-lg"
+                className="text-primary text-hover-dark font-size-lg"
               >
-                Concept Design
+                Oficina Bogota
               </a>
-              <span className="text-muted">Art Director</span>
+              <span className="text-muted lh-1">
+                30 Asesores <br/>
+                Marcos Barrios GZ
+              </span>
             </div>
+            <span className="label label-lg label-light-dark label-inline font-weight-bold py-4">
+                  97%
+            </span>
           </div>
           <div className="d-flex align-items-center mb-10">
             <div className="symbol symbol-40 symbol-light-success mr-5">
               <span className="symbol-label">
                 <span className="svg-icon svg-icon-lg svg-icon-success">
-                  <SVG
-                    className="h-75 align-self-end"
-                    src={toAbsoluteUrl(
-                      "/media/svg/icons/Communication/Group-chat.svg"
-                    )}
-                  ></SVG>
+                <i className="fa fa-building fa-lg text-success"></i>
                 </span>
               </span>
             </div>
 
-            <div className="d-flex flex-column font-weight-bold">
+            <div className="d-flex flex-column font-weight-bold w-75">
               <a
                 href="#"
-                className="text-dark text-hover-primary mb-1 font-size-lg"
+                className="text-primary text-hover-dark font-size-lg"
               >
-                Functional Logics
+                Oficina Medellin
               </a>
-              <span className="text-muted">Lead Developer</span>
+              <span className="text-muted lh-1">
+                30 Asesores <br/>
+                Marcos Barrios GZ
+              </span>
+                
             </div>
+            <span className="label label-lg label-light-dark label-inline font-weight-bold py-4">
+                  97%
+            </span>
           </div>
 
           <div className="d-flex align-items-center mb-10">
             <div className="symbol symbol-40 symbol-light-danger mr-5">
               <span className="symbol-label">
                 <span className="svg-icon svg-icon-lg svg-icon-danger">
-                  <SVG
-                    className="h-75 align-self-end"
-                    src={toAbsoluteUrl(
-                      "/media/svg/icons/General/Attachment2.svg"
-                    )}
-                  ></SVG>
+                <i className="fa fa-building fa-lg text-danger"></i>
                 </span>
               </span>
             </div>
 
-            <div className="d-flex flex-column font-weight-bold">
+            <div className="d-flex flex-column font-weight-bold w-75">
               <a
                 href="#"
-                className="text-dark text-hover-primary mb-1 font-size-lg"
+                className="text-primary text-hover-dark font-size-lg"
               >
-                Development
+                Oficina Cali
               </a>
-              <span className="text-muted">DevOps</span>
+              <span className="text-muted lh-1">
+                30 Asesores <br/>
+                Marcos Barrios GZ
+              </span>
             </div>
+            <span className="label label-lg label-light-dark label-inline font-weight-bold py-4">
+                  97%
+            </span>
           </div>
 
           <div className="d-flex align-items-center mb-2">
             <div className="symbol symbol-40 symbol-light-info mr-5">
               <span className="symbol-label">
                 <span className="svg-icon svg-icon-lg  svg-icon-info">
-                  <SVG
-                    className="h-75 align-self-end"
-                    src={toAbsoluteUrl(
-                      "/media/svg/icons/Communication/Shield-user.svg"
-                    )}
-                  ></SVG>
+                <i className="fa fa-building fa-lg text-info"></i>
                 </span>
               </span>
             </div>
 
-            <div className="d-flex flex-column font-weight-bold">
+            <div className="d-flex flex-column font-weight-bold w-75">
               <a
                 href="#"
-                className="text-dark text-hover-primary mb-1 font-size-lg"
+                className="text-primary text-hover-dark font-size-lg"
               >
-                Testing
+                Oficina Pereira
               </a>
-              <span className="text-muted">QA Managers</span>
+              <span className="text-muted lh-1">
+                30 Asesores <br/>
+                Marcos Barrios GZ
+              </span>
             </div>
+            <span className="label label-lg label-light-dark label-inline font-weight-bold py-4">
+                  97%
+            </span>
           </div>
         </div>
       </div>

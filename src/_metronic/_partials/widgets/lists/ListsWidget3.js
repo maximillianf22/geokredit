@@ -1,35 +1,55 @@
 /* eslint-disable no-script-url,jsx-a11y/anchor-is-valid */
-import React from "react";
+import React, { useState } from "react";
 import SVG from "react-inlinesvg";
-import {Dropdown} from "react-bootstrap";
 import {toAbsoluteUrl} from "../../../_helpers";
-import {DropdownCustomToggler, DropdownMenu1, DropdownMenu2} from "../../dropdowns";
+
 
 export function ListsWidget3({ className }) {
+  const tabs = {
+    tab11: "kt_tab_pane__1",
+    tab21: "kt_tab_pane__2",
+  };
+  const [activeTab, setActiveTab] = useState(tabs.tab11);
   return (
     <>
       <div className={`card card-custom ${className}`}>
-        {/* Head */}
+        {/* Header */}
         <div className="card-header border-0">
-          <h3 className="card-title font-weight-bolder text-dark">Authors</h3>
-          <div className="card-toolbar">
-            <Dropdown className="dropdown-inline" drop="down" alignRight>
-              <Dropdown.Toggle
-                id="dropdown-toggle-top2"
-                variant="transparent"
-                className="btn btn-light-primary btn-sm font-weight-bolder dropdown-toggle">
-                Create
-              </Dropdown.Toggle>
-              <Dropdown.Menu className="dropdown-menu dropdown-menu-sm dropdown-menu-right">
-                <DropdownMenu2 />
-              </Dropdown.Menu>
-            </Dropdown>
+          <h3 className="card-title font-weight-bolder text-dark">
+            Top Asesores
+          </h3>
+          <div className="card-toolbar tb-nav bg-secondary rounded mt-0">
+            <ul className="nav nav-pills nav-pills-sm nav-dark-75">
+              <li className="nav-item">
+                <a
+                  className={`nav-link py-2 px-4 ${activeTab === tabs.tab11 &&
+                    "active"}`}
+                  data-toggle="tab"
+                  href={`#${tabs.tab11}`}
+                  onClick={() => setActiveTab(tabs.tab11)}
+                >
+                  Alta
+                </a>
+              </li>
+              <li className="nav-item">
+                <a
+                  className={`nav-link py-2 px-4 ${activeTab === tabs.tab21 &&
+                    "active"}`}
+                  data-toggle="tab"
+                  href={`#${tabs.tab21}`}
+                  onClick={() => setActiveTab(tabs.tab21)}
+                >
+                  Baja
+                </a>
+              </li>
+            </ul>        
           </div>
         </div>
+
         {/* Body */}
         <div className="card-body pt-2">
           <div className="d-flex align-items-center mb-10">
-            <div className="symbol symbol-40 symbol-light-success mr-5">
+          <div className="symbol symbol-40 symbol-light-secondary mr-5">
               <span className="symbol-label">
                 <SVG
                   className="h-75 align-self-end"
@@ -37,117 +57,216 @@ export function ListsWidget3({ className }) {
                 ></SVG>
               </span>
             </div>
-            <div className="d-flex flex-column flex-grow-1 font-weight-bold">
+
+            <div className="d-flex flex-column font-weight-bold w-75">
               <a
                 href="#"
-                className="text-dark text-hover-primary mb-1 font-size-lg"
+                className="text-primary text-hover-dark font-size-lg"
               >
-                Ricky Hunt
+                Alejandro Fernandez <small className="text-dark">E</small>
               </a>
-              <span className="text-muted">PHP, SQLite, Artisan CLI</span>
-            </div>
-            <ItemDropdown item="" />
-          </div>
-
-          <div className="d-flex align-items-center mb-10">
-            <div className="symbol symbol-40 symbol-light-success mr-5">
-              <span className="symbol-label">
-                <SVG
-                  className="h-75 align-self-end"
-                  src={toAbsoluteUrl("/media/svg/avatars/006-girl-3.svg")}
-                ></SVG>
+              <span className="text-muted lh-1">
+                $10,000,000 <small>Colocados</small> <br/>
+                Barranquilla - 56 <small>Visitas</small>
               </span>
             </div>
-            <div className="d-flex flex-column flex-grow-1 font-weight-bold">
-              <a
-                href="#"
-                className="text-dark text-hover-primary mb-1 font-size-lg"
-              >
-                Anne Clarc
-              </a>
-              <span className="text-muted">PHP, SQLite, Artisan CLI</span>
+            <div className="d-flex flex-column w-50 mr-2">
+              <div className="d-flex align-items-center justify-content-between mb-2 text-nowrap">
+                <span className="text-muted mr-2 font-size-sm">
+                  Radicados
+                </span>
+                <span className="text-dark s font-size-sm font-weight-bold">
+                  65% (2)
+                </span>
+              </div>
+              <div className="progress progress-xs w-100">
+                <div
+                  className="progress-bar bg-success"
+                  role="progressbar"
+                  style={{ width: "65%" }}
+                  aria-valuenow="50"
+                  aria-valuemin="0"
+                  aria-valuemax="100"
+                ></div>
+              </div>
             </div>
-            <ItemDropdown item="" />
-          </div>
-
-          <div className="d-flex align-items-center mb-10">
-            <div className="symbol symbol-40 symbol-light-success mr-5">
-              <span className="symbol-label">
-                <SVG
-                  className="h-75 align-self-end"
-                  src={toAbsoluteUrl("/media/svg/avatars/011-boy-5.svg")}
-                ></SVG>
-              </span>
-            </div>
-            <div className="d-flex flex-column flex-grow-1 font-weight-bold">
-              <a
-                href="#"
-                className="text-dark text-hover-primary mb-1 font-size-lg"
-              >
-                Kristaps Zumman
-              </a>
-              <span className="text-muted">PHP, SQLite, Artisan CLI</span>
-            </div>
-            <ItemDropdown item="" />
           </div>
           <div className="d-flex align-items-center mb-10">
-            <div className="symbol symbol-40 symbol-light-success mr-5">
+          <div className="symbol symbol-40 symbol-light-secondary mr-5">
               <span className="symbol-label">
                 <SVG
                   className="h-75 align-self-end"
-                  src={toAbsoluteUrl("/media/svg/avatars/015-boy-6.svg")}
+                  src={toAbsoluteUrl("/media/svg/avatars/009-boy-4.svg")}
                 ></SVG>
               </span>
             </div>
-            <div className="d-flex flex-column flex-grow-1 font-weight-bold">
-              <a
-                href="#"
-                className="text-dark text-hover-primary mb-1 font-size-lg"
-              >
-                Ricky Hunt
-              </a>
-              <span className="text-muted">PHP, SQLite, Artisan CLI</span>
-            </div>
-            <ItemDropdown item="" />
-          </div>
 
-          <div className="d-flex align-items-center mb-2">
-            <div className="symbol symbol-40 symbol-light-success mr-5">
+            <div className="d-flex flex-column font-weight-bold w-75">
+              <a
+                href="#"
+                className="text-primary text-hover-dark font-size-lg"
+              >
+                Alejandro Fernandez <small className="text-dark">E</small>
+              </a>
+              <span className="text-muted lh-1">
+                $10,000,000 <small>Colocados</small> <br/>
+                Barranquilla - 56 <small>Visitas</small>
+              </span>
+            </div>
+            <div className="d-flex flex-column w-50 mr-2">
+              <div className="d-flex align-items-center justify-content-between mb-2 text-nowrap">
+                <span className="text-muted mr-2 font-size-sm">
+                  Radicados
+                </span>
+                <span className="text-dark s font-size-sm font-weight-bold">
+                  65% (2)
+                </span>
+              </div>
+              <div className="progress progress-xs w-100">
+                <div
+                  className="progress-bar bg-success"
+                  role="progressbar"
+                  style={{ width: "65%" }}
+                  aria-valuenow="50"
+                  aria-valuemin="0"
+                  aria-valuemax="100"
+                ></div>
+              </div>
+            </div>
+          </div>
+          <div className="d-flex align-items-center mb-10">
+          <div className="symbol symbol-40 symbol-light-secondary mr-5">
               <span className="symbol-label">
                 <SVG
                   className="h-75 align-self-end"
-                  src={toAbsoluteUrl("/media/svg/avatars/016-boy-7.svg")}
+                  src={toAbsoluteUrl("/media/svg/avatars/009-boy-4.svg")}
                 ></SVG>
               </span>
             </div>
-            <div className="d-flex flex-column flex-grow-1 font-weight-bold">
+
+            <div className="d-flex flex-column font-weight-bold w-75">
               <a
                 href="#"
-                className="text-dark text-hover-primary mb-1 font-size-lg"
+                className="text-primary text-hover-dark font-size-lg"
               >
-                Carles Puyol
+                Alejandro Fernandez <small className="text-dark">G</small>
               </a>
-              <span className="text-muted">PHP, SQLite, Artisan CLI</span>
+              <span className="text-muted lh-1">
+                $10,000,000 <small>Colocados</small> <br/>
+                Barranquilla - 56 <small>Visitas</small>
+              </span>
             </div>
-            <ItemDropdown item="" />
+            <div className="d-flex flex-column w-50 mr-2">
+              <div className="d-flex align-items-center justify-content-between mb-2 text-nowrap">
+                <span className="text-muted mr-2 font-size-sm">
+                  Radicados
+                </span>
+                <span className="text-dark s font-size-sm font-weight-bold">
+                  65% (2)
+                </span>
+              </div>
+              <div className="progress progress-xs w-100">
+                <div
+                  className="progress-bar bg-success"
+                  role="progressbar"
+                  style={{ width: "65%" }}
+                  aria-valuenow="50"
+                  aria-valuemin="0"
+                  aria-valuemax="100"
+                ></div>
+              </div>
+            </div>
           </div>
+          <div className="d-flex align-items-center mb-10">
+          <div className="symbol symbol-40 symbol-light-secondary mr-5">
+              <span className="symbol-label">
+                <SVG
+                  className="h-75 align-self-end"
+                  src={toAbsoluteUrl("/media/svg/avatars/009-boy-4.svg")}
+                ></SVG>
+              </span>
+            </div>
+
+            <div className="d-flex flex-column font-weight-bold w-75">
+              <a
+                href="#"
+                className="text-primary text-hover-dark font-size-lg"
+              >
+                Alejandro Fernandez <small className="text-dark">G</small>
+              </a>
+              <span className="text-muted lh-1">
+                $10,000,000 <small>Colocados</small> <br/>
+                Barranquilla - 56 <small>Visitas</small>
+              </span>
+            </div>
+            <div className="d-flex flex-column w-50 mr-2">
+              <div className="d-flex align-items-center justify-content-between mb-2 text-nowrap">
+                <span className="text-muted mr-2 font-size-sm">
+                  Radicados
+                </span>
+                <span className="text-dark s font-size-sm font-weight-bold">
+                  65% (2)
+                </span>
+              </div>
+              <div className="progress progress-xs w-100">
+                <div
+                  className="progress-bar bg-success"
+                  role="progressbar"
+                  style={{ width: "65%" }}
+                  aria-valuenow="50"
+                  aria-valuemin="0"
+                  aria-valuemax="100"
+                ></div>
+              </div>
+            </div>
+          </div>
+          <div className="d-flex align-items-center mb-10">
+          <div className="symbol symbol-40 symbol-light-secondary mr-5">
+              <span className="symbol-label">
+                <SVG
+                  className="h-75 align-self-end"
+                  src={toAbsoluteUrl("/media/svg/avatars/009-boy-4.svg")}
+                ></SVG>
+              </span>
+            </div>
+
+            <div className="d-flex flex-column font-weight-bold w-75">
+              <a
+                href="#"
+                className="text-primary text-hover-dark font-size-lg"
+              >
+                Alejandro Fernandez <small className="text-dark">J</small>
+              </a>
+              <span className="text-muted lh-1">
+                $10,000,000 <small>Colocados</small> <br/>
+                Barranquilla - 56 <small>Visitas</small>
+              </span>
+            </div>
+            <div className="d-flex flex-column w-50 mr-2">
+              <div className="d-flex align-items-center justify-content-between mb-2 text-nowrap">
+                <span className="text-muted mr-2 font-size-sm">
+                  Radicados
+                </span>
+                <span className="text-dark s font-size-sm font-weight-bold">
+                  65% (2)
+                </span>
+              </div>
+              <div className="progress progress-xs w-100">
+                <div
+                  className="progress-bar bg-success"
+                  role="progressbar"
+                  style={{ width: "65%" }}
+                  aria-valuenow="50"
+                  aria-valuemin="0"
+                  aria-valuemax="100"
+                ></div>
+              </div>
+            </div>
+          </div>
+          
         </div>
       </div>
     </>
   );
 }
 
-const ItemDropdown = ({item}) => {
-  return (<>
-  <Dropdown className="dropdown-inline" alignRight>
-    <Dropdown.Toggle
-      id="dropdown-toggle-top"
-      as={DropdownCustomToggler}>
-      <i className="ki ki-bold-more-hor" />
-    </Dropdown.Toggle>
-    <Dropdown.Menu className="dropdown-menu dropdown-menu-sm dropdown-menu-right">
-      <DropdownMenu1 />
-    </Dropdown.Menu>
-  </Dropdown>
-  </>);
-};
