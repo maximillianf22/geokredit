@@ -4,7 +4,7 @@ function InfoWindowCustom({handleShowModalCalendar, handleShowModalPerfil}) {
 	return(
 		<div className = "row px-3">
               <div className = "col-md-3">
-                <button className = "btn btn-sm btn-info" onClick={() => console.log('Clicked')}>
+                <button className = "btn btn-sm btn-info" onClick={handleShowModalCalendar}>
                   <i className = "fa fa-calendar"></i>
                 </button>
               </div>
@@ -23,8 +23,7 @@ function InfoWindowCustom({handleShowModalCalendar, handleShowModalPerfil}) {
                   <i className = "fa fa-expand-arrows-alt"></i>
                 </button>
               </div>
-              
-            </div>
+    </div>
 		)
 }
 

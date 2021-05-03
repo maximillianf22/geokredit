@@ -1,5 +1,8 @@
-import React, { useState } from 'react'
-import { Map, GoogleApiWrapper, Marker, InfoWindow, Polyline} from 'google-maps-react'
+import React, { useState, useEffect } from 'react'
+import { Marker } from 'google-maps-react'
+import GoogleMapReact from 'google-map-react';
+import {Popover, OverlayTrigger} from 'react-bootstrap'
+
 import company from './icons/company.svg'
 import client from './icons/client.svg'
 
@@ -10,23 +13,36 @@ import InfoWindowCustom from './InfoWindow'
 
 //https://www.npmjs.com/package/google-maps-react DOCUMENTACIÓN DE LA LIBRERÍA
 
+
 function MapContainer(props) {
+    const {executeFunction} = props
+
+    useEffect( () => {
+      if(executeFunction) barranquillaPos()
+    }, [executeFunction])
+    const barranquillaPos = () => {
+      setMapProps({
+            zoom: 12,
+            center: { lat: 10.96854, lng: -74.78132},
+            visibleClients: true
+        })
+    }
     const routesCoords = [
-    {lat: 4.60971, lng: -74.08175},
-    {lat: 10.96854, lng: -74.78132},
-  ];
+        { lat: 4.60971, lng: -74.08175 },
+        { lat: 10.96854, lng: -74.78132 },
+    ];
     const [mapProps, setMapProps] = useState({
-        zoom: 5,
+        zoom: 6,
         center: { lat: 4.570868, lng: -74.297333 },
         visibleClients: false,
     })
     const [showModalCalendar, setShowModalCalendar] = useState(false)
-    const handleShowModalCalendar =  () => setShowModalCalendar(true)
-    const handleCloseModalCalendar =  () => setShowModalCalendar(false)
+    const handleShowModalCalendar = () => setShowModalCalendar(true)
+    const handleCloseModalCalendar = () => setShowModalCalendar(false)
 
     const [showModalPerfil, setShowModalPerfil] = useState(false)
-    const handleShowModalPerfil =  () => setShowModalPerfil(true)
-    const handleCloseModalPerfil =  () => setShowModalPerfil(false)
+    const handleShowModalPerfil = () => setShowModalPerfil(true)
+    const handleCloseModalPerfil = () => setShowModalPerfil(false)
 
     const [showInfo, setShowInfo] = useState({
         showingInfoWindow: false,
@@ -34,151 +50,80 @@ function MapContainer(props) {
         selectedPlace: {},
     })
 
-    const handleClickMarker = (props, marker, e) => {
+    const handleClickMarker = (lat, lng) => {
         setMapProps({
             zoom: 12,
-            center: { lat: marker.position.lat(), lng: marker.position.lng() },
+            center: { lat: lat, lng: lng},
             visibleClients: true
         })
     }
-    const handleClickClient = (props, marker, e) => {
-        setShowInfo({
-            selectedPlace: props,
-            activeMarker: marker,
-            showingInfoWindow: true
-        })
-    }
-    const handleClickMap = (props, marker, e) => {
-      setShowInfo({
-            selectedPlace: {},
-            activeMarker: {},
-            showingInfoWindow: false
-        })
-    }
-    const mapStyles = {
-        width: '100%',
-        height: '100%',
-        borderRadius: '20px'
-    };
-    return (
-        <Map
-          google={props.google}
-          zoom={mapProps.zoom}
-          style={mapStyles}
-          initialCenter={mapProps.center}
-          center={mapProps.center}
-          onClick = {handleClickMap}
-        >
-        <Polyline
-          path={routesCoords}
-          strokeColor="#000"
-          strokeOpacity={0.5}
-          strokeWeight={3} />
-         <Marker
-          title={'Bogotá'}
-          onClick = {handleClickMarker}
-          position={{lat: 4.60971, lng: -74.08175}}
-          icon={{
-                  url: company,
-                  anchor: new props.google.maps.Point(32, 32),
-                scaledSize: new props.google.maps.Size(40,40)
-          }} 
-          />
-          <Marker
-          title={'Barranquilla'}
-          onClick = {handleClickMarker}
-          position={{lat: 10.96854, lng: -74.78132}}
-          icon={{
-                  url: company,
-                  anchor: new props.google.maps.Point(32, 32),
-                scaledSize: new props.google.maps.Size(40,40)
-          }} />
-
-
-          <Marker
-          title={'Cliente'}
-          onClick = {handleClickClient}
-          position={{lat: 4.60971, lng: -74.09975}}
-          visible = {mapProps.visibleClients}
-          icon={{
-                  url: client,
-                  anchor: new props.google.maps.Point(32, 32),
-                scaledSize: new props.google.maps.Size(32,32)
-          }} 
-          >
-          </Marker>
-
-          <Marker
-          title={'Cliente'}
-          onClick = {handleClickClient}
-          position={{lat: 4.64871, lng: -74.09580}}
-          visible = {mapProps.visibleClients}
-          icon={{
-                  url: client,
-                  anchor: new props.google.maps.Point(32, 32),
-                scaledSize: new props.google.maps.Size(32,32)
-          }} 
-          >
-          </Marker>
-
-          <Marker
-          title={'Cliente'}
-          onClick = {handleClickClient}
-          position={{lat: 4.65871, lng: -74.0580}}
-          visible = {mapProps.visibleClients}
-          icon={{
-                  url: client,
-                  anchor: new props.google.maps.Point(32, 32),
-                scaledSize: new props.google.maps.Size(32,32)
-          }} 
-          >
-          </Marker>
-
-          <Marker
-          title={'Cliente'}
-          onClick = {handleClickClient}
-          position={{lat: 10.97854, lng: -74.78232}}
-          visible = {mapProps.visibleClients}
-          icon={{
-                  url: client,
-                  anchor: new props.google.maps.Point(32, 32),
-                scaledSize: new props.google.maps.Size(32,32)
-          }} />
-           <Marker
-          title={'Cliente'}
-          onClick = {handleClickClient}
-          position={{lat: 10.98654, lng: -74.78832}}
-          visible = {mapProps.visibleClients}
-          icon={{
-                  url: client,
-                  anchor: new props.google.maps.Point(32, 32),
-                scaledSize: new props.google.maps.Size(32,32)
-          }} />
-
-          <Marker
-          title={'Cliente'}
-          onClick = {handleClickClient}
-          position={{lat: 10.98154, lng: -74.78932}}
-          visible = {mapProps.visibleClients}
-          icon={{
-                  url: client,
-                  anchor: new props.google.maps.Point(32, 32),
-                scaledSize: new props.google.maps.Size(32,32)
-          }} />
-           <InfoWindow
-            visible={showInfo.showingInfoWindow}
-            className = "infoWindow"
-            marker={showInfo.activeMarker}
-            >
-            <InfoWindowCustom handleShowModalCalendar = {handleShowModalCalendar}
+ const popover = (
+  <Popover id="popover-basic" style = {{position : 'fixed'}}>
+    <Popover.Content>
+      <InfoWindowCustom handleShowModalCalendar = {handleShowModalCalendar}
             handleShowModalPerfil = {handleShowModalPerfil}/>
-          </InfoWindow>
+    </Popover.Content>
+  </Popover>
+);
+
+    return (
+        <GoogleMapReact
+          bootstrapURLKeys={{key: 'AIzaSyA01EIKVqGmy9BAhcDyT-nsJsLtBUbU_gA'}}
+          center={mapProps.center}
+          defaultCenter={mapProps.center}
+          defaultZoom = {mapProps.zoom}
+          zoom={mapProps.zoom}
+        >
+
+        <div lat = {4.60971} lng = {-74.08175} onClick = {() => handleClickMarker(4.60971, -74.08175)}>
+          <button className="btn">
+            <img src={company} alt="" style = {{height : '35px', width : '35px'}}/>
+          </button>
+        </div>
+
+        <div lat = {10.96854} lng = {-74.78132} onClick = {() => handleClickMarker(10.96854, -74.78132)}>
+          <button className="btn">
+            <img src={company} alt="" style = {{height : '35px', width : '35px'}}/>
+          </button>
+        </div>
+
+        <div lat = {4.60971} lng = {-74.09975} className = {mapProps.visibleClients ? '' : 'd-none'}>
+          <OverlayTrigger trigger="click" placement="top" overlay={popover}>
+          <button className="btn">
+            <img src={client} alt="" style = {{height : '35px', width : '35px'}}/>
+          </button>
+          </OverlayTrigger>
+        </div>
+
+        <div lat = {4.64871} lng = {-74.09580} className = {mapProps.visibleClients ? '' : 'd-none'}>
+          <OverlayTrigger trigger="click" placement="top" overlay={popover}>
+          <button className="btn">
+            <img src={client} alt="" style = {{height : '35px', width : '35px'}}/>
+          </button>
+          </OverlayTrigger>
+        </div>
+
+        <div lat = {10.97854} lng = { -74.78232} className = {mapProps.visibleClients ? '' : 'd-none'}>
+          <OverlayTrigger trigger="click" placement="top" overlay={popover}>
+          <button className="btn">
+            <img src={client} alt="" style = {{height : '35px', width : '35px'}}/>
+          </button>
+          </OverlayTrigger>
+        </div>
+
+        <div lat = {10.98654} lng = {-74.78832} className = {mapProps.visibleClients ? '' : 'd-none'}>
+          <OverlayTrigger trigger="click" placement="top" overlay={popover}>
+          <button className="btn">
+            <img src={client} alt="" style = {{height : '35px', width : '35px'}}/>
+          </button>
+          </OverlayTrigger>
+        </div>
+
+
           <ModalCalendar show = {showModalCalendar} handleClose = {handleCloseModalCalendar}/>
           <ModalPerfil show = {showModalPerfil} handleClose = {handleCloseModalPerfil}/>
-        </Map>
+        </GoogleMapReact>
     )
 }
 
-export default GoogleApiWrapper({
-    apiKey: 'AIzaSyA01EIKVqGmy9BAhcDyT-nsJsLtBUbU_gA'
-})(MapContainer);
+export default MapContainer
